@@ -12,7 +12,7 @@ def main():
 
     for a in annotations:
         add_annotation(a)
-    print(d)
+    write_annotations_to_files()
 
 def add_annotation(annotation):
     lines = annotation.split('\n')
@@ -40,6 +40,11 @@ def extract_title_author(first_line):
     author = m[2]
 
     return title + " - " + author
+
+def write_annotations_to_files():
+    for title_author, annotations in d.items():
+        with open(title_author + ".txt", 'w', encoding='utf-8') as f:
+            f.write("\n\n--------\n\n".join(annotations))
 
 if __name__ == "__main__":
     main()
