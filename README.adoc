@@ -1,0 +1,7 @@
+= kindle-clippings-extract-backup
+
+This is a semi-automatic tool, which executes the following steps every time you push a new `My Clippings.txt` in the `master` branch using github actions:
+- separate notes from different books using a script (don't know which one yet) in a temporary branch
+- merge this temporary branch with the files in the `notes` branch
+
+// The `notes` branch
