@@ -44,7 +44,7 @@ def extract_title_author(first_line):
 def write_annotations_to_files():
     for title_author, annotations in d.items():
         with open(title_author + ".txt", 'w', encoding='utf-8') as f:
-            f.write("\n\n--------\n\n".join(annotations))
+            f.write("\n\n--------\n\n".join(annotations) + "\n\n--------\n\n")
 
 if __name__ == "__main__":
     main()
