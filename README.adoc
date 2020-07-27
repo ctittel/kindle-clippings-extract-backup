@@ -1,4 +1,4 @@
-= kindle-clippings-extract-backup
+= Backup and extract kindle clippings to GitHub using GitHub Actions
 :toc:
 
 Backup and extract your kindle notes in a semi-automatic fashion using GitHub actions.
