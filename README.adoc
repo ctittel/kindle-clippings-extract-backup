@@ -10,10 +10,12 @@ Amazon Kindles store all markings - both from ebooks purchased with Amazon and d
 Each marking consists of four lines, for example:
 
 ----
+==========
 The Tao Te Ching (Lao Tzu)
 - Ihre Markierung bei Position 22-23 | Hinzugefügt am Donnerstag, 14. Juni 2018 23:06:53
 
 Practice not-doing, and everything will fall into place.
+==========
 ----
 
 Annotation entries are separated by bars consisting of 10 `=`.
