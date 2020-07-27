@@ -1,27 +1,49 @@
 = kindle-clippings-extract-backup
 :toc:
 
-WARNING: Don't use this yet, the merging when the `My Clippings.txt` is reset doesn't work yet!
+Backup and extract your kindle notes in a semi-automatic fashion.
 
 == Description
 
-This is a semi-automatic tool, which executes the following steps every time you push a new `My Clippings.txt` in the `master` branch using github actions:
+Amazon Kindles store all markings - both from ebooks purchased with Amazon and documents brought on the kindle in other ways - in the file `Kindle/documents/My Clippings.txt`.
+
+Each marking consists of four lines, for example:
+
+----
+The Tao Te Ching (Lao Tzu)
+- Ihre Markierung bei Position 22-23 | Hinzugefügt am Donnerstag, 14. Juni 2018 23:06:53
+
+Practice not-doing, and everything will fall into place.
+----
+
+Annotation entries are separated by bars consisting of 10 `=`.
+
+This repository presents a semi-automatic tool which backups the `My Clippings.txt` file, extracts the annotations and merges them with the previous one (if the `My Clippings.txt` is reset no quotes are lost). In the last step the annotations are formatted with Markdown and separated by book and pushed to a human-friendly branch for reading.
+
+Implemented using GitHub actions and a simple Python script.
+
+This is only semi-automatic as I know of no simple way to extract the `My Clippings.txt` from the kindle device autonomously.
+To use this tool, the user has to extract the `My Clippings.txt` from the kindle by plugging it into a computer and than upload it to a repository with the scripts presented here.
+
+, which executes the following steps every time you push a new `My Clippings.txt` in the `master` branch using github actions:
 - separate notes from different books using a script (don't know which one yet) in a temporary branch
 - merge this temporary branch with the files in the `notes` branch
 
 The `notes` branch is the end result - here you can read, edit and delete the annotations.
 If your `My Clippings.txt` is reset, all new notes will be appended to the existing notes, nothing will be lost.
 
-== ToDo
-- [ ] Make the README better
-- [ ] Fix the merge issue when the source file is reset
--- likely requires a custom merge driver
--- Related Stackoverflow question: https://stackoverflow.com/questions/34795604/does-git-support-automatic-merge-conflict-resolution-for-append-only-files
-- [ ] Test corner cases that can appear in the source file 
+This tool uses three branches:
+- `master`: contains the scripts and is the place where the user inputs his `My Clippings.txt`
+- `store`: Keeps a backup of all quotes, in case the `My Clippings.txt` is truncated.
+- `notes`: This is the place where the nicely formatted Markdown files with the annotations are sent to - the 'output' for the user
 
 == How to use
-Setup two branches in the remote directory (here `store` and `notes`).
-They should be part of the same tree (only one of them an orphan).
+Clone this repository or copy the all the files from the master branch to your own repository.
+
+If you clone this repository, delete the `store` and `notes` branches (e.g. with `git push origin --delete notes` and `git branch -D notes`) and set them up fresh.
+If you copy the files, you only need to setup these two branches.
+
+The setup of `store` and `notes` can be done like this:
 
 [source,bash]
 ----
@@ -33,4 +55,7 @@ git commit --allow-empty -m "init"
 git push origin notes
 ----
 
-If you mess up, the ´notes´ branch can be deleted with `git push origin --delete notes`.
+== Support
+If you find any bugs, please submit an issue here.
+Also if you find a simple way to automatically export `My Clippings.txt` from kindle devices, please submit an issue so I may implement it.
+If you like this tool, consider leaving a star.
