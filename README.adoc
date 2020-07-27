@@ -44,12 +44,20 @@ These branch names are used in the GitHub workflow file.
 If you want to use other branch names, you need to adjust them there.
 
 == Setup
-Clone this repository or copy the all the files from the master branch to your own repository (but replace `My Clippings.txt` with your own).
 
-If you clone this repository, delete the `store` and `notes` branches (e.g. with `git push origin --delete notes` and `git branch -D notes`) and set them up fresh.
-If you copy the files, you only need to setup these two branches.
+This section describes how to set up this tool.
 
-The setup of `store` and `notes` can be done like this:
+=== 1. Clone or copy files
+First you need to copy the relevant files.
+There are two ways to do this, by copying the relevant files manually or by using the GitHub template (recommended).
+- *Using the template*: Press "Use this template", enter a name and tick the checkbox `Include all branches`.
+- *Copying the files*: Create a new repository and copy all the files from the `master` branch into the new repositories `master` branch.
+
+=== 2. Set up the branches
+To work, this tool needs the `master` branch with the script files as well as empty and related `store` and `notes` branches.
+Check which branches your new repository has with `git branch`.
+
+If you are missing the `store` and `notes` branches, you can create them with the following commands:
 
 [source,bash]
 ----
@@ -65,8 +73,15 @@ git push origin store
 git checkout master
 ----
 
+If you, for whatever reason, want to start fresh you can always reset everything by removing the `store` and `notes` branches (e.g. with `git push origin --delete notes` and `git branch -D notes`).
+
+=== 3. Paste in your `My Clippings.txt` file from the kindle
+Connect your kindle to your computer.
+Open the `/documents` directory on the kindle.
+Overwrite the `My Clippings.txt` file in the `master` branch with the `My Clippings.txt` file from `/documents`, commit the change and push it to GitHub.
+
 == How to use
-- Set up the repository as described before
+- Set up the repository as described above
 - After that, iteratively:
 ** Upload your current version of `My Clippings.txt` from your kindle to the `master` branch (replace the previous version) and commit it
 ** The GitHub action is then triggered and merges new annotations to the `notes` branch
