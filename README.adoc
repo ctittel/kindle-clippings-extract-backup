@@ -1,7 +1,7 @@
 = kindle-clippings-extract-backup
 :toc:
 
-Backup and extract your kindle notes in a semi-automatic fashion.
+Backup and extract your kindle notes in a semi-automatic fashion using GitHub actions.
 
 == Description
 
