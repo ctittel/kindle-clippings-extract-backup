@@ -50,11 +50,11 @@ This section describes how to set up this tool.
 === 1. Clone or copy files
 First you need to copy the relevant files.
 There are two ways to do this, by copying the relevant files manually or by using the GitHub template (recommended).
-- *Using the template*: Press "Use this template", enter a name and tick the checkbox `Include all branches`.
+- *Using the template*: Press "Use this template", enter a name and tick the checkbox `Include all branches`. To get all branches from the master run `git fetch --all`.
 - *Copying the files*: Create a new repository and copy all the files from the `master` branch into the new repositories `master` branch.
 
 === 2. Set up the branches
-To work, this tool needs the `master` branch with the script files as well as empty and related `store` and `notes` branches.
+To work, the remote GitHub repository needs to have a `master` branch with the script files as well as empty and related `store` and `notes` branches.
 Check which branches your new repository has with `git branch`.
 
 If you are missing the `store` and `notes` branches, you can create them with the following commands:
@@ -79,6 +79,11 @@ If you, for whatever reason, want to start fresh you can always reset everything
 Connect your kindle to your computer.
 Open the `/documents` directory on the kindle.
 Overwrite the `My Clippings.txt` file in the `master` branch with the `My Clippings.txt` file from `/documents`, commit the change and push it to GitHub.
+
+=== 4. Update
+If there are changes in this template repository and you would like to update your instance, you do this by either updating the files in the `master` branch with the ones from this repository (except `My Clippings.txt`).
+
+If you used the "Use this template" method to create your clone, follow the instructions here: https://stackoverflow.com/questions/56577184/github-pull-changes-from-a-template-repository
 
 == How to use
 - Set up the repository as described above
