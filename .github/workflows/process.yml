@@ -32,8 +32,8 @@ jobs:
         run: |
           git checkout notes
           git merge --no-ff -s recursive -X subtree=output store
-          git add -A
-          git commit -m "update"
+          # git add -A
+          # git commit -m "update"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
