@@ -30,7 +30,7 @@ jobs:
       - name: Merge new annotations with notes branch
         run: |
           git checkout notes
-          git merge --allow-unrelated-histories temp -s recursive -Xours 
+          git merge --allow-unrelated-histories temp -s --union 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
