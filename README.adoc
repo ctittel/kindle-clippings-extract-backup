@@ -18,8 +18,8 @@ The Tao Te Ching (Lao Tzu)
 Practice not-doing, and everything will fall into place.
 ========== <2>
 ----
-<1>: Here the kindle is set to German so the position and timestamp line is also in german; but during parsing the information from this line isn't extracted anyways so it should work for every language.
-<2>: Annotation entries are separated by bars consisting of 10 `=`.
+<1> Here the kindle is set to German so the position and timestamp line is also in german; but during parsing the information from this line isn't extracted anyways so it should work for every language.
+<2> Annotation entries are separated by bars consisting of 10 `=`.
 
 This repository presents a semi-automatic tool which backups the `My Clippings.txt` file, extracts the annotations and merges them with the previous one (if the `My Clippings.txt` is reset no quotes are lost). In the last step the annotations are formatted with Markdown and separated by book and pushed to a human-friendly branch for reading.
 
