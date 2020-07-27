@@ -16,30 +16,24 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.7'
-      - name: Create annotation files in temporary branch
+      - name: Update json stored annotations in the store branch
         run: |
           git fetch
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout --orphan temp
-          git rm -rf .
-          rm -f *
-          ls -lia
-          git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
+          git checkout store
+          git checkout master -- process.py "My Clippings.txt"
           python process.py
+          git rm -rf -- process.py "My Clippings.txt"
+          rm -rf process.py "My Clippings.txt"
           git add -A
-          git commit -m "init"
-      - name: Merge old stuff into temp branch
-        run: |
-          git merge --allow-unrelated-histories origin/notes
-          git rm -rf  -- process.py "My Clippings.txt" .gitattributes .gitconfig
-          rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
-          git add -A
-          git commit -m "remove temp files"
+          git commit -m "update store"
       - name: Merge notes into notes branch
         run: |
           git checkout notes
-          git merge temp
+          git merge --no-ff -s recursive -X subtree=notes store
+          git add -A
+          git commit -m "update"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
