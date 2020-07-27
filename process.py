@@ -7,7 +7,7 @@ matcher = re.compile(r'^(.*) +\((.*)\)$')
 annotations_dict = {}
 
 json_files_dir = Path("./json")
-notes_files_dir = Path("./notes")
+notes_files_dir = Path("./output")
 
 class BookData:
     def __init__(self, title, authors):

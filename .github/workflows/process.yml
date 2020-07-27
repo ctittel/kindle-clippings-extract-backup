@@ -31,7 +31,7 @@ jobs:
       - name: Merge notes into notes branch
         run: |
           git checkout notes
-          git merge --no-ff -s recursive -X subtree=notes -- store
+          git merge --no-ff -s recursive -X subtree=output store
           git add -A
           git commit -m "update"
       - name: Push changes
