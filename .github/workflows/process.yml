@@ -5,6 +5,8 @@ on:
     branches:
       - master
 
+# using filthy hacks by copying files from other branches (by name) and then deleting them again
+
 jobs:
   process:
     runs-on: ubuntu-latest
@@ -21,7 +23,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout --orphan temp
           git rm -rf .
-          rm -f .gitignore
+          rm -f *
+          ls -lia
           git checkout master -- process.py "My Clippings.txt"
           python process.py
           git rm -rf process.py "My Clippings.txt"
@@ -30,7 +33,12 @@ jobs:
       - name: Merge new annotations with notes branch
         run: |
           git checkout notes
-          git merge --allow-unrelated-histories temp --union 
+          git checkout master -- .gitattributes .gitconfig
+          git merge --allow-unrelated-histories --no-commit temp
+          git rm -rf -- .gitattributes .gitconfig
+          rm -rf .gitattributes .gitconfig
+          git add -A
+          git commit -m "update notes"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
