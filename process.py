@@ -6,8 +6,14 @@ annotations_dict = {}
 
 class BookData:
     def __init__(self, title, authors):
-        self.authors = authors # list of authors
+        self.authors = tuple(authors) # list of authors
         self.title = title
+    
+    def __eq__(self, another):
+        return ((self.authors == another.authors) and (self.title == another.title))
+
+    def __hash__(self):
+        return hash(self.title + " " + " ".join(self.authors))
 
 def main():
     with open("My Clippings.txt", encoding='utf-8-sig') as f:
@@ -40,20 +46,26 @@ def add_annotation_to_dict(annotation):
         raise "ERROR: There should always be 4 lines"
 
 def write_annotations_to_files():
+    print(annotations_dict)
     for bd, annotations in annotations_dict.items():
-        
+        print("item")
         # Build filename of output files
         fn = bd.title + " - " + ", ".join(bd.authors) + ".md"
 
         with open(fn, 'w', encoding='utf-8') as f:
+            content = ""
+
             # Write the book title in the first line
-            f.write("# " + bd.title + "\n\n")
+            content += "# " + bd.title + "\n\n"
 
             # After the title, just print all quotes with empty lines inbetween
-            f.write("\n\n".join(annotations))
+            content += "\n\n".join(annotations)
 
             # last line is empty
-            f.write("\n")
+            content += "\n"
+
+            # Write the string to the file
+            f.write(content)
 
 if __name__ == "__main__":
     main()
