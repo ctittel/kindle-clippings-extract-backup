@@ -88,7 +88,7 @@ def write_notes_files():
             content += "# " + bd.title
 
             # Write author in the second line
-            content += "*by " + ' and '.join(bd.authors) + "*" + "\n\n"
+            content += "\n*by " + ' and '.join(bd.authors) + "*" + "\n\n"
 
             # After the title, just print all quotes with empty lines inbetween
             content += "\n\n".join(annotations)
