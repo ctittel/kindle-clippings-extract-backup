@@ -67,16 +67,17 @@ def update_json_files():
         Otherwise merge the new stuff into the existing json file"""
 
     for bd in annotations_dict:
-        with open(make_json_file_path(bd), 'w+') as f:
-            file_content = f.read()
-            notes = []
-            if file_content:
-                notes = json.loads()['notes']
-            notes_set = set(notes)
-            for nn in annotations_dict[bd]:
-                if nn not in notes_set:
-                    notes.append(nn)
-            annotations_dict[bd] = notes
+        fp = make_json_file_path(bd)
+        notes = []
+        if fp.exists():
+            with fp.open(mode="r") as f:
+                notes = json.loads(f.read())['notes']
+        notes_set = set(notes)
+        for nn in annotations_dict[bd]:
+            if nn not in notes_set:
+                notes.append(nn)
+        annotations_dict[bd] = notes
+        with fp.open(mode="w+") as f:
             f.write(json.dumps({'notes':notes}))
 
 def write_notes_files():
