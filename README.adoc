@@ -9,6 +9,7 @@ Amazon kindles store all highlightings - both from ebooks purchased with Amazon 
 
 Each marking consists of four lines, for example:
 
+[source]
 ----
 ==========
 The Tao Te Ching (Lao Tzu)
