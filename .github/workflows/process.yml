@@ -34,7 +34,6 @@ jobs:
           git checkout notes
           git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
           git merge --allow-unrelated-histories --no-commit temp
-          git rm -rf -- process.py "My Clippings.txt" .gitattributes .gitconfig
           rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
           git add -A
           git commit -m "update notes"
