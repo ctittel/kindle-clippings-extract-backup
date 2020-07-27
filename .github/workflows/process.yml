@@ -38,16 +38,16 @@ jobs:
       #     git add -A
       #     git commit -m "update notes"
       - name: Merge old stuff into temp branch
-          run: |
-            git merge --allow-unrelated-histories
-            git rm -rf  -- process.py "My Clippings.txt" .gitattributes .gitconfig
-            rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
-            git add -A
-            git commit -m "remove temp files"
+        run: |
+          git merge --allow-unrelated-histories
+          git rm -rf  -- process.py "My Clippings.txt" .gitattributes .gitconfig
+          rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
+          git add -A
+          git commit -m "remove temp files"
       - name: Merge notes into notes branch
-          run: |
-            git checkout notes
-            git merge temp
+        run: |
+          git checkout notes
+          git merge temp
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
