@@ -1,0 +1,23 @@
+name: Process changes to the "My Clippings.txt" file
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Create annotation files in temporary branch
+        run: |
+          git checkout --orphan temp
+          git rm -rf .
+          git checkout master -- process.py "My Clippings.txt"
+          python process.py
+          git rm -rf process.py My
