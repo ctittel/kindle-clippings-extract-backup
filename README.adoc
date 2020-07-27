@@ -31,3 +31,5 @@ git rm -rf .
 git commit --allow-empty -m "init"
 git push origin notes
 ----
+
+If you mess up, the ´notes´ branch can be deleted with `git push origin --delete notes`.
