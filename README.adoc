@@ -63,7 +63,7 @@ git push origin notes
 - After that, iteratively:
 ** Upload your current version of `My Clippings.txt` from your kindle to the `master` branch (replace the previous version) and commit it
 ** The GitHub action is then triggered and merges new annotations to the `notes` branch
-** Check out the `notes` and review your annotations
+** Switch to the `notes` branch and review your annotations
 
 == Support
 If you find any bugs, please submit an issue here.
