@@ -71,3 +71,5 @@ git push origin notes
 If you find any bugs, please submit an issue here.
 Also if you find a simple way to automatically export `My Clippings.txt` from kindle devices, please submit an issue so I may implement it.
 If you like this tool, consider leaving a star.
+
+If you want to change the output (i.e. use a different kind of markup), the easiest way would be to clone this repository and edit `process.py`.
