@@ -16,6 +16,7 @@ jobs:
           python-version: '3.7'
       - name: Create annotation files in temporary branch
         run: |
+          git fetch
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git checkout --orphan temp
@@ -32,7 +33,6 @@ jobs:
       #     ref: notes
       - name: Merge new annotations with notes branch
         run: |
-          git fetch
           git checkout notes
           git merge temp
       - name: Push changes
