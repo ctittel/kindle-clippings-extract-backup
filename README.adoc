@@ -56,8 +56,12 @@ git checkout --orphan notes
 # delete and unstage all files in the directory, e.g. with:
 git rm -rf .
 rm .gitignore
-git commit --allow-empty -m "init"
+git commit --allow-empty -m "init notes branch"
 git push origin notes
+git checkout -b store
+git commit --allow-empty -m "init store branch"
+git push origin store
+git checkout master
 ----
 
 == How to use
