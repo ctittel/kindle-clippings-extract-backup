@@ -1,4 +1,9 @@
 = kindle-clippings-extract-backup
+:toc:
+
+WARNING: Don't use this yet, the merging when the `My Clippings.txt` is reset doesn't work yet!
+
+== Description
 
 This is a semi-automatic tool, which executes the following steps every time you push a new `My Clippings.txt` in the `master` branch using github actions:
 - separate notes from different books using a script (don't know which one yet) in a temporary branch
@@ -6,6 +11,13 @@ This is a semi-automatic tool, which executes the following steps every time you
 
 The `notes` branch is the end result - here you can read, edit and delete the annotations.
 If your `My Clippings.txt` is reset, all new notes will be appended to the existing notes, nothing will be lost.
+
+== ToDo
+- [ ] Make the README better
+- [ ] Fix the merge issue when the source file is reset
+-- likely requires a custom merge driver
+-- Related Stackoverflow question: https://stackoverflow.com/questions/34795604/does-git-support-automatic-merge-conflict-resolution-for-append-only-files
+- [ ] Test corner cases that can appear in the source file 
 
 == How to use
 Setup an empty branch if you have not already (here the branch will be`notes`)
