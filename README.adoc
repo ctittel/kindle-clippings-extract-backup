@@ -37,6 +37,9 @@ This tool uses three branches:
 - `store`: Keeps a backup of all quotes, in case the `My Clippings.txt` is truncated.
 - `notes`: This is the place where the nicely formatted Markdown files with the annotations are sent to - the 'output' for the user
 
+These branch names are used in the GitHub workflow file.
+If you want to use other branch names, you need to adjust them there.
+
 == How to use
 Clone this repository or copy the all the files from the master branch to your own repository.
 
