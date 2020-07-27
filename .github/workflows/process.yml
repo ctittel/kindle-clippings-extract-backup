@@ -27,7 +27,7 @@ jobs:
           git rm -rf -- process.py "My Clippings.txt"
           rm -rf process.py "My Clippings.txt"
           git add -A
-          git commit -m "update store"
+          git diff-index --quiet HEAD || git commit -m 'update store' # otherwise error if there is nothing to commit
           git push origin store
       - name: Merge notes into notes branch
         run: |
