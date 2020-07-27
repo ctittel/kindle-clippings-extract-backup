@@ -32,6 +32,7 @@ jobs:
       #     ref: notes
       - name: Merge new annotations with notes branch
         run: |
+          git fetch
           git checkout notes
           git merge temp
       - name: Push changes
