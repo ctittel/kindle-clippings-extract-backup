@@ -13,10 +13,10 @@ Each marking consists of four lines, for example:
 ----
 ==========
 The Tao Te Ching (Lao Tzu)
-- Ihre Markierung bei Position 22-23 | Hinzugefügt am Donnerstag, 14. Juni 2018 23:06:53 # <1>
+- Ihre Markierung bei Position 22-23 | Hinzugefügt am Donnerstag, 14. Juni 2018 23:06:53 <1>
 
 Practice not-doing, and everything will fall into place.
-========== # <2>
+========== <2>
 ----
 <1>: Here the kindle is set to German so the position and timestamp line is also in german; but during parsing the information from this line isn't extracted anyways so it should work for every language.
 <2>: Annotation entries are separated by bars consisting of 10 `=`.
