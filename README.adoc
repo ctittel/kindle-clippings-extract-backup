@@ -5,7 +5,7 @@ Backup and extract your kindle notes in a semi-automatic fashion using GitHub ac
 
 == Description
 
-Amazon Kindles store all markings - both from ebooks purchased with Amazon and documents brought on the kindle in other ways - in the file `/documents/My Clippings.txt`.
+Amazon kindles store all highlightings - both from ebooks purchased with Amazon and documents transferred to the kindle in other ways - in the file `/documents/My Clippings.txt`.
 
 Each marking consists of four lines, for example:
 
