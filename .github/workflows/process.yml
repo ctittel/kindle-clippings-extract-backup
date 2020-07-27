@@ -27,7 +27,6 @@ jobs:
           ls -lia
           git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
           python process.py
-          # git rm -rf process.py "My Clippings.txt"
           git add -A
           git commit -m "init"
       - name: Merge new annotations with notes branch
