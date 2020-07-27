@@ -25,18 +25,18 @@ jobs:
           git rm -rf .
           rm -f *
           ls -lia
-          git checkout master -- process.py "My Clippings.txt"
+          git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
           python process.py
-          git rm -rf process.py "My Clippings.txt"
+          # git rm -rf process.py "My Clippings.txt"
           git add -A
           git commit -m "init"
       - name: Merge new annotations with notes branch
         run: |
           git checkout notes
-          git checkout master -- .gitattributes .gitconfig
+          git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
           git merge --allow-unrelated-histories --no-commit temp
-          git rm -rf -- .gitattributes .gitconfig
-          rm -rf .gitattributes .gitconfig
+          git rm -rf -- process.py "My Clippings.txt" .gitattributes .gitconfig
+          rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
           git add -A
           git commit -m "update notes"
       - name: Push changes
