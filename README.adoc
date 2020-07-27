@@ -40,8 +40,8 @@ This tool uses three branches:
 These branch names are used in the GitHub workflow file.
 If you want to use other branch names, you need to adjust them there.
 
-== How to use
-Clone this repository or copy the all the files from the master branch to your own repository.
+== Setup
+Clone this repository or copy the all the files from the master branch to your own repository (but replace `My Clippings.txt` with your own).
 
 If you clone this repository, delete the `store` and `notes` branches (e.g. with `git push origin --delete notes` and `git branch -D notes`) and set them up fresh.
 If you copy the files, you only need to setup these two branches.
@@ -57,6 +57,12 @@ rm .gitignore
 git commit --allow-empty -m "init"
 git push origin notes
 ----
+
+== How to use
+- Set up the repository as described before
+- Upload the `My Clippings.txt` from your kindle to the `master` branch (replace the previous version) and commit it
+- The GitHub action is then triggered and merges new annotations to the `notes` branch
+- Check out the `notes` and review your annotations
 
 == Support
 If you find any bugs, please submit an issue here.
