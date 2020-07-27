@@ -28,14 +28,14 @@ jobs:
           rm -rf process.py "My Clippings.txt"
           git add -A
           git commit -m "update store"
+          git push origin store
       - name: Merge notes into notes branch
         run: |
           git checkout notes
           git merge --no-ff -s recursive -X subtree=output store
-          # git add -A
-          # git commit -m "update"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          branch: notes
+          git push origin notes
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{secrets.GITHUB_TOKEN}}
+      #     branch: notes
