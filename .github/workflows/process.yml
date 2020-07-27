@@ -39,7 +39,7 @@ jobs:
       #     git commit -m "update notes"
       - name: Merge old stuff into temp branch
         run: |
-          git merge --allow-unrelated-histories
+          git merge --allow-unrelated-histories notes
           git rm -rf  -- process.py "My Clippings.txt" .gitattributes .gitconfig
           rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
           git add -A
