@@ -1,3 +1,0 @@
-[merge "aggregate"]
-    name = aggregate both new sections
-    driver = git merge-file --union -L %P %A %O %B
