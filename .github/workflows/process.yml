@@ -29,14 +29,6 @@ jobs:
           python process.py
           git add -A
           git commit -m "init"
-      # - name: Merge new annotations with notes branch
-      #   run: |
-      #     git checkout notes
-      #     git checkout master -- process.py "My Clippings.txt" .gitattributes .gitconfig
-      #     git merge --allow-unrelated-histories --no-commit temp
-      #     rm -rf process.py "My Clippings.txt" .gitattributes .gitconfig
-      #     git add -A
-      #     git commit -m "update notes"
       - name: Merge old stuff into temp branch
         run: |
           git merge --allow-unrelated-histories origin/notes
