@@ -20,7 +20,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout --orphan temp
           git rm -rf .
-          rm .gitignore
+          rm -f .gitignore
           git checkout master -- process.py "My Clippings.txt"
           python process.py
           git rm -rf process.py "My Clippings.txt"
