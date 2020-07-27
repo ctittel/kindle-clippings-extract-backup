@@ -20,14 +20,15 @@ If your `My Clippings.txt` is reset, all new notes will be appended to the exist
 - [ ] Test corner cases that can appear in the source file 
 
 == How to use
-Setup an empty branch if you have not already (here the branch will be`notes`)
-can be set up with:
+Setup two branches in the remote directory (here `store` and `notes`).
+They should be part of the same tree (only one of them an orphan).
 
 [source,bash]
 ----
 git checkout --orphan notes
 # delete and unstage all files in the directory, e.g. with:
 git rm -rf .
+rm .gitignore
 git commit --allow-empty -m "init"
 git push origin notes
 ----
