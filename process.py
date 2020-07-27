@@ -1,50 +1,59 @@
 import os
 import re
 
-d = {}
 matcher = re.compile(r'^(.*) +\((.*)\)$')
-# \\(([^\\(]*)\\)$
+annotations_dict = {}
+
+class BookData:
+    def __init__(self, title, authors):
+        self.authors = authors # list of authors
+        self.title = title
+
 def main():
     with open("My Clippings.txt", encoding='utf-8-sig') as f:
         s = f.read()
 
     annotations = s.split("\n==========\n")
-
     for a in annotations:
-        add_annotation(a)
+        add_annotation_to_dict(a)
     write_annotations_to_files()
 
-def add_annotation(annotation):
+def add_annotation_to_dict(annotation):
+    """ Takes an annotation block (between the == in the My Clippings file)
+        Add annotation to dict """
     lines = annotation.split('\n')
-    # print(lines)
-
+    
     if len(lines) == 4:
-        title_author = extract_title_author(lines[0])
-        
-        if title_author not in d:
-            d[title_author] = [lines[3]]
+        m = matcher.match(lines[0])
+        title = m[1]
+        authors = m[2].split(';')
+        text = lines[3]
+
+        # Build a BookData object (used as key)
+        fn = BookData(title, authors)
+
+        if fn not in annotations_dict:
+            annotations_dict[fn] = [text]
         else:
-            d[title_author].append(lines[3])
+            annotations_dict[fn].append(text)
     elif len(lines) > 4:
         raise "ERROR: There should always be 4 lines"
 
-def extract_title_author(first_line):
-    """ Takes the first line of an annotation
-        Returns formatted title and author (which is then used as filename) """
-
-    # print(first_line)
-    m = matcher.match(first_line)
-    # author = author.group(1)
-
-    title = m[1]
-    author = m[2]
-
-    return title + " - " + author
-
 def write_annotations_to_files():
-    for title_author, annotations in d.items():
-        with open(title_author + ".txt", 'w', encoding='utf-8') as f:
-            f.write("\n\n--------\n\n".join(annotations) + "\n\n--------\n\n")
+    for bd, annotations in annotations_dict.items():
+        
+        # Build filename of output files
+        fn = bd.title + " - " + ", ".join(bd.authors) + ".md"
+
+        with open(fn, 'w', encoding='utf-8') as f:
+            # Write the book title in the first line
+            f.write("# " + bd.title + "\n\n")
+
+            # After the title, just print all quotes with empty lines inbetween
+            f.write("\n\n".join(annotations))
+
+            # last line is empty
+            f.write("\n")
 
 if __name__ == "__main__":
     main()
