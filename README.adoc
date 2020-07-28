@@ -18,7 +18,7 @@ The Tao Te Ching (Lao Tzu)
 Practice not-doing, and everything will fall into place.
 ========== <2>
 ----
-<1> Here the kindle is set to German so the position and timestamp line is also in german; but during parsing the information from this line isn't extracted anyways so it should work for every language.
+<1> Here the kindle is set to German so the position and timestamp line is also in German; but during parsing the information from this line isn't extracted anyways so it should work for every language.
 <2> Annotation entries are separated by bars consisting of 10 `=`.
 
 This repository presents a semi-automatic tool which backups the `My Clippings.txt` file, extracts the annotations and merges them with the previous one (if the `My Clippings.txt` is reset no quotes are lost). In the last step the annotations are formatted with Markdown and separated by book and pushed to a human-friendly branch for reading.
@@ -26,9 +26,9 @@ This repository presents a semi-automatic tool which backups the `My Clippings.t
 Implemented using GitHub actions and a simple Python script.
 
 This is only semi-automatic as I know of no simple way to extract the `My Clippings.txt` from the kindle device autonomously.
-To use this tool, the user has to extract the `My Clippings.txt` from the kindle by plugging it into a computer and than upload it to a repository with the scripts presented here.
+To use this tool, the user has to extract the `My Clippings.txt` from the kindle by plugging it into a computer and then upload it to a repository with the scripts presented here.
 
-, which executes the following steps every time you push a new `My Clippings.txt` in the `master` branch using github actions:
+Pushing something to the `master` branch (if you use this as intended, this would be a new version of the `My Clippings.txt`) triggers the following GitHub actions:
 - separate notes from different books using a script (don't know which one yet) in a temporary branch
 - merge this temporary branch with the files in the `notes` branch
 
